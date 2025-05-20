@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gcp-monitoring-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gcp-monitoring-app
+  template:
+    metadata:
+      labels:
+        app: gcp-monitoring-app
+    spec:
+      containers:
+        - name: gcp-monitoring-app
+          image: gcr.io/gcp-monitoring-app/gcp-monitoring-app:latest
+          ports:
+            - containerPort: 3000
